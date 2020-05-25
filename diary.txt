@@ -41,3 +41,11 @@ navigate to project settings
 ]
 >>> STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 cmd> python manage.py collectstatic
+
+
+for accessing these static files add
+{% load static %}
+in the index page or page that is referencing to
+and also add
+{% static '<address>' %}
+to every src and href that are referring to static folder
