@@ -1,0 +1,27 @@
+cmd> django-admin startproject <project_name>       # creates a project
+cmd> python manage.py runserver                     # fires up python server
+cmd> python manage.py startapp <app_name>           # creates an app
+
+after creating app we have to set navigation path for it...
+create urls.py under first_app
+    >>> from django.urls import path
+    >>> from . import views
+
+    setting url urlpatterns
+    >>> urlpatterns = [
+        path('/', views.home, name='home')
+    ]
+
+now when we head to / path it asks for home function in views file
+so lets create home function in views.py
+>>> from django.http import HttpResponse            # HttpResponse is for sending respone
+>>> def home(request):
+    return HttpResponse("HelloWorld")
+
+it is completed setiing path for our app
+but we also set path for project so that it knows there is our app
+so navigate project folder and then urls.py
+>>> from django.urls import path, include
+>>> urlpatterns = [
+    path('', include('first_app.urls'))
+]
