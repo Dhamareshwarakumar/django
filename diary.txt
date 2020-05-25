@@ -25,3 +25,19 @@ so navigate project folder and then urls.py
 >>> urlpatterns = [
     path('', include('first_app.urls'))
 ]
+
+setting up templates
+create a folder under root director say <templates>
+add this path to settings of the project
+find template.DIR and append
+>>> os.path.join(BASE_DIR, '<templates>')
+
+
+create a 'static' folder so that all static files can reside
+now we have to map these static files assets of djangoproject
+navigate to project settings
+>>> STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+>>> STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+cmd> python manage.py collectstatic
