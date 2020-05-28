@@ -98,3 +98,14 @@ cmd> create manag.py createsuperuser
 toget access by admin panel register you model in admin.py
 >>> from .models import <model_name>
 >>> admin.site.register(model_name)
+
+
+for making access to upload media content
+navigate to settings.py and add the following
+>>> MEDIA_URL = '/media'
+>>> MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+navigate to urls.py
+from django.conf import settings
+from django.conf.url.static import static
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
