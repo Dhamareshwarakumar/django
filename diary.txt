@@ -49,3 +49,44 @@ in the index page or page that is referencing to
 and also add
 {% static '<address>' %}
 to every src and href that are referring to static folder
+
+
+looping
+{% for i in var %}
+    ....
+{% endfor %}
+
+Database connectivity
+>>> DATABASES = {
+>>>    'default': {
+>>>        'ENGINE': 'django.db.backends.postgresql',
+>>>        'NAME': 'hello_django',
+>>>        'USER': 'postgres',
+>>>        'PASSWORD': '1234'
+>>>        'HOST': '127.0.0.1'
+>>>    }
+>>>}
+
+Database Models
+>>> class Destination(models.Model):
+>>>     name = models.CharField(max_length=100)
+>>>     img = models.ImageField(upload_to='pics')
+>>>     desc = models.TextField()
+>>>     price = models.IntegerField()
+>>>     offer = models.BooleanField(default=False)
+
+now we have to install the travello app (our app)
+navigate to settings.installed apps and register you app
+append 'travello.apps.TravelloConfig' to Installed_Apps list
+
+for handling image uploads pillow library is needed
+cmd> pip install pillow
+
+next we have to  migrate tables
+cmd>python manage.py makemigrations
+
+next migrate to sql
+cmd> python manage.py sqlmigrate travello 0001
+
+Applying Migrations
+cmd> python manage.py migrate
