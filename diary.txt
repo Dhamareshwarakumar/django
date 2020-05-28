@@ -90,3 +90,11 @@ cmd> python manage.py sqlmigrate travello 0001
 
 Applying Migrations
 cmd> python manage.py migrate
+
+
+ADMIN PANEL
+cmd> create manag.py createsuperuser
+
+toget access by admin panel register you model in admin.py
+>>> from .models import <model_name>
+>>> admin.site.register(model_name)
